@@ -52,7 +52,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest] #, macos-latest]
     runs-on: ${{ matrix.os }}
     env:
       EMSDK_NUM_CORES: 3
@@ -88,11 +88,11 @@ jobs:
         run: |
           sudo apt install -y build-essential git xxd
 
-      - name: Install dependencies (macos)
-        shell: bash -l {0}
-        if: ${{ contains(runner.os, 'macos') }}
-        run: |
-          brew install coreutils
+      # - name: Install dependencies (macos)
+      #   shell: bash -l {0}
+      #   if: ${{ contains(runner.os, 'macos') }}
+      #   run: |
+      #     brew install coreutils
 
       - name: Install dependencies (Python)
         shell: bash -l {0}
